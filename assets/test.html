@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>WebView中使用HTML打开本地应用</title>
+	<script language="Javascript" type="text/javascript">
+	  	var href = document.URL;
+		var index = href.indexOf("?");
+		var args = index>-1?href.substring(index, href.length()):"";
+		var url = "nativeapp://com.hxh.htmlopenapp/startApp"; + args;
+		
+		function openApp() {
+			//alert(window.location.href);
+			window.location.href = url;
+		}
+	</script>
+</head>
+<body >
+<!--<a href="javascript:" onclick="openApp();">open</a>
+<a href="nativeapp://com.hxh.htmlopenapp">打开本地应用</a>-->  
+<a onclick="openApp();">open</a>
+
+</body>
+</html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		测试页面<br/><br/><br/>
+		<a href="index.jsp" id="openApp">APK客户端下载链接</a>
+		<script type="text/javascript">
+		
+		//ios判断  if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) 
+		
+		//判断是否是android设备浏览器	if (navigator.userAgent.match(/android/i)) {
+		alert(window.location.href);
+		if (navigator.userAgent.match(/android/i)) {
+	
+			document.getElementById('openApp').onclick = function(e) {
+				// 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止a标签的默认行为
+				// 否则打开a标签的href链接
+				alert(window.location.href);
+				var ifrSrc = 'nativeapp://com.hxh.htmlopenapp?name=tom&age=18';
+				if (!ifrSrc) {
+					return;
+				}
+				var ifr = document.createElement('iframe');
+				ifr.src = ifrSrc;
+				ifr.style.display = 'none';
+				document.body.appendChild(ifr);
+				setTimeout(function() {
+					document.body.removeChild(ifr);
+	
+				}, 1000);
+	
+			};
+			if (document.all) {
+				document.getElementById('openApp').click();
+			}
+			// 其它浏览器
+			else {
+				var e = document.createEvent("MouseEvents");
+				e.initEvent("click", true, true);
+				document.getElementById("openApp").dispatchEvent(e);
+			}
+		}
+	</script>
+
+
+	</body>
+</html>-->
